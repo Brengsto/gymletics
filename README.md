@@ -11,6 +11,7 @@ A clean, responsive multi-page website for a fictional gym. Built with plain HTM
 | `classes.html` | Class categories and an interactive weekly schedule (filter by day and category) |
 | `reviews.html` | Overall rating, review summary and member reviews |
 | `join.html` | Membership plans, newsletter signup (20% off the first 6 months) and FAQ |
+| `checkout.html` | Checkout – plan selection, discount code, live order summary and confirmation |
 
 ## Run locally
 

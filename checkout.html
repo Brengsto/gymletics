@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout – Gymletics</title>
+  <meta name="description" content="Complete your Gymletics membership sign-up.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container nav">
+      <a href="index.html" class="logo"><img src="logo.svg" alt="" width="32" height="32">GYM<span>LETICS</span></a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">Why Gymletics</a></li>
+          <li><a href="classes.html">Classes</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+      <a href="join.html#newsletter" class="btn btn-primary nav-cta">Get 20% off</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero page-hero-sm">
+      <img class="hero-bg" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80" alt="">
+      <div class="container">
+        <span class="eyebrow">Checkout</span>
+        <h1>Complete your <em>sign-up</em></h1>
+      </div>
+    </section>
+
+    <section class="section-alt">
+      <div class="container">
+        <div class="checkout-grid" id="checkout">
+          <form id="checkoutForm" novalidate>
+            <div class="co-card">
+              <h2>1. Choose your plan</h2>
+              <div class="plan-options" id="planOptions">
+                <label class="plan-option">
+                  <input type="radio" name="plan" value="basic">
+                  <span class="plan-text"><strong>Basic</strong><small>Gym floor, intro session, training plan</small></span>
+                  <span class="plan-price">€29.90<small>/month</small></span>
+                </label>
+                <label class="plan-option">
+                  <input type="radio" name="plan" value="premium" checked>
+                  <span class="plan-text"><strong>Premium</strong><small>Everything in Basic + all classes + sauna</small></span>
+                  <span class="plan-price">€39.90<small>/month</small></span>
+                </label>
+                <label class="plan-option">
+                  <input type="radio" name="plan" value="daypass">
+                  <span class="plan-text"><strong>Day Pass</strong><small>One day, full access, no commitment</small></span>
+                  <span class="plan-price">€12<small>/day</small></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="co-card">
+              <h2>2. Your details</h2>
+              <div class="field-row">
+                <div class="field">
+                  <label for="firstName">First name</label>
+                  <input type="text" id="firstName" autocomplete="given-name" required>
+                  <div class="error-msg" id="firstNameError" aria-live="polite"></div>
+                </div>
+                <div class="field">
+                  <label for="lastName">Last name</label>
+                  <input type="text" id="lastName" autocomplete="family-name" required>
+                  <div class="error-msg" id="lastNameError" aria-live="polite"></div>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="coEmail">Email address</label>
+                  <input type="email" id="coEmail" autocomplete="email" placeholder="name@example.com" required>
+                  <div class="error-msg" id="coEmailError" aria-live="polite"></div>
+                </div>
+                <div class="field">
+                  <label for="startDate" id="startLabel">Start date</label>
+                  <input type="date" id="startDate" required>
+                  <div class="error-msg" id="startDateError" aria-live="polite"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="co-card">
+              <h2>3. Discount code</h2>
+              <div class="code-row">
+                <input type="text" id="discountCode" placeholder="e.g. GYMLETICS20-AB12C" autocomplete="off" aria-label="Discount code">
+                <button type="button" class="btn btn-outline" id="applyCode">Apply</button>
+              </div>
+              <div class="error-msg" id="codeMsg" aria-live="polite"></div>
+              <p class="form-note left">No code yet? <a href="join.html#newsletter" class="text-link">Sign up for the newsletter</a> to get 20% off your first 6 months.</p>
+            </div>
+
+            <div class="co-card">
+              <h2>4. Payment</h2>
+              <div class="pay-options">
+                <label class="check">
+                  <input type="radio" name="payment" value="debit" checked>
+                  <span><strong>Direct debit</strong> – set up securely at your first visit</span>
+                </label>
+                <label class="check">
+                  <input type="radio" name="payment" value="reception">
+                  <span><strong>Pay at reception</strong> – card or cash</span>
+                </label>
+              </div>
+              <p class="form-note left">You don't pay anything online today.</p>
+            </div>
+
+            <div class="co-card">
+              <div class="terms" id="minTermBox" hidden>
+                <strong>Discount terms:</strong>
+                <ul>
+                  <li>20% off your monthly fee for months 1–6.</li>
+                  <li>The membership has a <strong>minimum term of 6 months</strong> and <strong>cannot be cancelled</strong> during this period.</li>
+                  <li>After that, the regular monthly fee applies.</li>
+                </ul>
+              </div>
+              <label class="check" id="minTermLabel" hidden>
+                <input type="checkbox" id="minTermCheck">
+                <span>I understand that my discounted membership cannot be cancelled for the first 6 months.</span>
+              </label>
+              <label class="check">
+                <input type="checkbox" id="agbCheck" required>
+                <span>I accept the membership terms and the privacy policy.</span>
+              </label>
+              <div class="error-msg" id="coCheckError" aria-live="polite"></div>
+              <button type="submit" class="btn btn-primary btn-block" id="submitBtn">Complete sign-up</button>
+            </div>
+          </form>
+
+          <aside class="co-card summary" aria-label="Order summary">
+            <h2>Order summary</h2>
+            <div id="summary"></div>
+          </aside>
+        </div>
+
+        <div class="co-card confirm" id="confirmBox" hidden>
+          <div class="confirm-icon" aria-hidden="true">✓</div>
+          <h2 id="confirmTitle">You're in!</h2>
+          <p id="confirmText"></p>
+          <div class="code" id="orderNo"></div>
+          <p class="form-note">Demo project – no data was sent and no payment was taken.</p>
+          <a href="classes.html" class="btn btn-primary">Browse classes</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo"><img src="logo.svg" alt="" width="32" height="32">GYM<span>LETICS</span></a>
+          <p>Your gym for strength, endurance and well-being.</p>
+        </div>
+        <div>
+          <h4>Opening hours</h4>
+          <ul>
+            <li>Mon–Fri: 6 AM–11 PM</li>
+            <li>Sat–Sun: 8 AM–10 PM</li>
+            <li>Holidays: 8 AM–8 PM</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>12 Sample Street</li>
+            <li>Sample City 12345</li>
+            <li><a href="mailto:hello@gymletics.example">hello@gymletics.example</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="about.html">Why Gymletics</a></li>
+            <li><a href="classes.html">Classes</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="join.html">Join</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Gymletics · Demo project</span>
+        <span>Photos: Unsplash</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -31,6 +31,7 @@
 
   // Highlight the current page in the navigation
   var page = location.pathname.split("/").pop() || "index.html";
+  if (page === "checkout.html") page = "join.html";
   Array.prototype.forEach.call(navLinks.querySelectorAll("a"), function (a) {
     if (a.getAttribute("href") === page) {
       a.classList.add("active");
@@ -202,9 +203,177 @@
       if (!ok) return;
 
       document.getElementById("successTitle").textContent = "Welcome, " + name + "!";
-      document.getElementById("codeOut").textContent = makeCode();
+      var code = makeCode();
+      document.getElementById("codeOut").textContent = code;
+      document.getElementById("checkoutLink").href = "checkout.html?plan=premium&code=" + encodeURIComponent(code);
       form.hidden = true;
       document.getElementById("successBox").hidden = false;
+    });
+  }
+
+  // ---------- Checkout (checkout.html) ----------
+  var coForm = document.getElementById("checkoutForm");
+  if (coForm) {
+    var plans = {
+      basic: { name: "Basic", price: 29.9, unit: "month", discountable: true },
+      premium: { name: "Premium", price: 39.9, unit: "month", discountable: true },
+      daypass: { name: "Day Pass", price: 12, unit: "day", discountable: false }
+    };
+    var codeRe = /^GYMLETICS20-[A-Z0-9]{5}$/;
+    var params = new URLSearchParams(location.search);
+    var co = { plan: plans[params.get("plan")] ? params.get("plan") : "premium", code: "" };
+
+    var planInputs = coForm.querySelectorAll('input[name="plan"]');
+    var codeIn = document.getElementById("discountCode");
+    var codeMsg = document.getElementById("codeMsg");
+    var startIn = document.getElementById("startDate");
+    var minTermBox = document.getElementById("minTermBox");
+    var minTermLabel = document.getElementById("minTermLabel");
+    var minTermCheck = document.getElementById("minTermCheck");
+    var summaryEl = document.getElementById("summary");
+
+    var euro = function (n) { return "€" + n.toFixed(2); };
+    var isoDate = function (d) {
+      return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    };
+    var today = isoDate(new Date());
+    startIn.min = today;
+    startIn.value = today;
+
+    var row = function (label, value, cls) {
+      return '<div class="summary-row' + (cls ? " " + cls : "") + '"><span>' + label + "</span><span>" + value + "</span></div>";
+    };
+
+    var renderCheckout = function () {
+      var p = plans[co.plan];
+      var hasDiscount = !!co.code && p.discountable;
+
+      Array.prototype.forEach.call(planInputs, function (inp) {
+        inp.checked = inp.value === co.plan;
+        inp.closest(".plan-option").classList.toggle("selected", inp.checked);
+      });
+
+      document.getElementById("startLabel").textContent = p.unit === "day" ? "Visit date" : "Start date";
+      minTermBox.hidden = !hasDiscount;
+      minTermLabel.hidden = !hasDiscount;
+      if (!hasDiscount) minTermCheck.checked = false;
+
+      if (co.code && !p.discountable) {
+        codeMsg.className = "error-msg";
+        codeMsg.textContent = "Your code is saved, but it only applies to Basic and Premium memberships.";
+      }
+
+      var html = row("Plan", escapeHtml(p.name));
+      html += row("Regular price", euro(p.price) + " / " + p.unit);
+      if (hasDiscount) {
+        var reduced = Math.round(p.price * 80) / 100;
+        html += row("Discount code", escapeHtml(co.code));
+        html += row("Discount", "−20%", "is-saving");
+        html += row("Months 1–6", euro(reduced) + " / month");
+        html += row("From month 7", euro(p.price) + " / month");
+        html += row("Minimum term", "6 months");
+        html += row("You save", euro(Math.round((p.price - reduced) * 600) / 100), "is-saving");
+      } else if (p.unit === "month") {
+        html += row("Billing", "Monthly");
+      }
+      if (p.unit === "day") {
+        html += row("Due on your visit", euro(p.price), "summary-total");
+        html += '<p class="summary-note">Pay at reception when you arrive.</p>';
+      } else {
+        html += row("Due today", euro(0), "summary-total");
+        html += '<p class="summary-note">Your first monthly payment is due on your start date.</p>';
+      }
+      summaryEl.innerHTML = html;
+    };
+
+    var applyCode = function () {
+      var val = codeIn.value.trim().toUpperCase();
+      codeIn.value = val;
+      if (!val) {
+        co.code = "";
+        codeMsg.className = "error-msg";
+        codeMsg.textContent = "Please enter a discount code.";
+      } else if (!codeRe.test(val)) {
+        co.code = "";
+        codeMsg.className = "error-msg";
+        codeMsg.textContent = "This code is not valid. Codes look like GYMLETICS20-AB12C.";
+      } else {
+        co.code = val;
+        codeMsg.className = "error-msg ok-msg";
+        codeMsg.textContent = "Code applied: 20% off your first 6 months.";
+      }
+      renderCheckout();
+    };
+
+    document.getElementById("planOptions").addEventListener("change", function (e) {
+      if (e.target.name !== "plan") return;
+      co.plan = e.target.value;
+      if (co.code && plans[co.plan].discountable) {
+        codeMsg.className = "error-msg ok-msg";
+        codeMsg.textContent = "Code applied: 20% off your first 6 months.";
+      }
+      renderCheckout();
+    });
+    document.getElementById("applyCode").addEventListener("click", applyCode);
+    codeIn.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { e.preventDefault(); applyCode(); }
+    });
+
+    if (params.get("code")) {
+      codeIn.value = params.get("code");
+      applyCode();
+    }
+    renderCheckout();
+
+    coForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var ok = true;
+      var p = plans[co.plan];
+      var emailRe2 = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      var fields = [
+        ["firstName", function (v) { return v.length >= 2; }, "Please enter your first name."],
+        ["lastName", function (v) { return v.length >= 2; }, "Please enter your last name."],
+        ["coEmail", function (v) { return emailRe2.test(v); }, "Please enter a valid email address."],
+        ["startDate", function (v) { return !!v && v >= today; }, "Please choose today or a future date."]
+      ];
+      fields.forEach(function (f) {
+        var input = document.getElementById(f[0]);
+        var valid = f[1](input.value.trim());
+        document.getElementById(f[0] + "Error").textContent = valid ? "" : f[2];
+        input.classList.toggle("invalid", !valid);
+        input.setAttribute("aria-invalid", valid ? "false" : "true");
+        if (!valid) ok = false;
+      });
+
+      var checkErr = document.getElementById("coCheckError");
+      var needMinTerm = !!co.code && p.discountable;
+      if (!document.getElementById("agbCheck").checked || (needMinTerm && !minTermCheck.checked)) {
+        checkErr.textContent = needMinTerm ? "Please confirm both boxes to continue." : "Please accept the membership terms to continue.";
+        ok = false;
+      } else {
+        checkErr.textContent = "";
+      }
+
+      if (!ok) {
+        var firstBad = coForm.querySelector(".invalid");
+        if (firstBad) firstBad.focus();
+        return;
+      }
+
+      var first = document.getElementById("firstName").value.trim();
+      var date = new Date(startIn.value + "T00:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+      var chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      var orderNo = "GL-";
+      for (var i = 0; i < 6; i++) orderNo += chars.charAt(Math.floor(Math.random() * chars.length));
+
+      document.getElementById("confirmTitle").textContent = "You're in, " + first + "!";
+      document.getElementById("confirmText").textContent = p.unit === "day"
+        ? "Your Day Pass is booked for " + date + ". Show your order number at reception."
+        : "Your " + p.name + " membership starts on " + date + (needMinTerm ? " with 20% off for the first 6 months." : ".") + " Your order number:";
+      document.getElementById("orderNo").textContent = orderNo;
+      document.getElementById("checkout").hidden = true;
+      document.getElementById("confirmBox").hidden = false;
+      window.scrollTo(0, document.getElementById("confirmBox").getBoundingClientRect().top + window.scrollY - 100);
     });
   }
 

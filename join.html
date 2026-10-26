@@ -47,7 +47,7 @@
         <div class="section-head center reveal">
           <span class="eyebrow">Plans</span>
           <h2>Choose your membership</h2>
-          <p>Discounted prices apply with your newsletter code for months 1–6.</p>
+          <p>Pick a plan and check out online. Have a newsletter code? Enter it at checkout for 20% off months 1–6.</p>
         </div>
 
         <div class="pricing-grid">
@@ -61,7 +61,7 @@
               <li>Free intro session</li>
               <li>Personal training plan</li>
             </ul>
-            <a href="#newsletter" class="btn btn-outline">Get discount code</a>
+            <a href="checkout.html?plan=basic" class="btn btn-outline">Choose Basic</a>
           </article>
           <article class="price-card featured reveal">
             <span class="price-tag">Most popular</span>
@@ -75,7 +75,7 @@
               <li>Sauna &amp; steam room</li>
               <li>Progress check-ins every 8 weeks</li>
             </ul>
-            <a href="#newsletter" class="btn btn-primary">Get discount code</a>
+            <a href="checkout.html?plan=premium" class="btn btn-primary">Choose Premium</a>
           </article>
           <article class="price-card reveal">
             <h3>Day Pass</h3>
@@ -87,7 +87,7 @@
               <li>Join any class that day</li>
               <li>Sauna &amp; steam room</li>
             </ul>
-            <a href="mailto:hello@gymletics.example" class="btn btn-outline">Ask at reception</a>
+            <a href="checkout.html?plan=daypass" class="btn btn-outline">Buy Day Pass</a>
           </article>
         </div>
       </div>
@@ -143,7 +143,8 @@
             <h3 id="successTitle">Welcome!</h3>
             <p>Your personal code for 20% off your first 6 months:</p>
             <div class="code" id="codeOut"></div>
-            <p>Just show this code at reception when you sign up. Note: 6-month minimum term, cannot be cancelled during this period.</p>
+            <p>Enter this code at checkout to get your discount. Note: 6-month minimum term, cannot be cancelled during this period.</p>
+            <a href="checkout.html?plan=premium" class="btn btn-primary" id="checkoutLink">Continue to checkout</a>
           </div>
         </div>
       </div>
