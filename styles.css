@@ -82,7 +82,8 @@ section { padding: 96px 0; }
 }
 .header.scrolled { background: rgba(255,255,255,.96); box-shadow: 0 2px 20px rgba(0,0,0,.06); }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-.logo { font-weight: 800; font-size: 1.35rem; letter-spacing: -.02em; color: #fff; }
+.logo { display: inline-flex; align-items: center; font-weight: 800; font-size: 1.35rem; letter-spacing: -.02em; color: #fff; }
+.logo img { width: 32px; height: 32px; flex-shrink: 0; margin-right: 10px; }
 .logo span { color: var(--accent); }
 .header.scrolled .logo { color: var(--text); }
 .nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
@@ -447,7 +448,7 @@ section { padding: 96px 0; }
 .footer h4 { color: #fff; margin: 0 0 14px; font-size: 1rem; }
 .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .footer a:hover { color: var(--accent); }
-.footer .logo { display: inline-block; margin-bottom: 12px; }
+.footer .logo { margin-bottom: 12px; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: .82rem; }
 
 /* ---------- Reveal ---------- */
