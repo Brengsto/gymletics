@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classes – Gymletics</title>
+  <meta name="description" content="Weekly class schedule at Gymletics: strength, cardio and body &amp; mind classes, all included in your membership.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container nav">
+      <a href="index.html" class="logo">GYM<span>LETICS</span></a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">Why Gymletics</a></li>
+          <li><a href="classes.html">Classes</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+      <a href="join.html#newsletter" class="btn btn-primary nav-cta">Get 20% off</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <img class="hero-bg" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1920&q=80" alt="Group fitness class in a bright studio">
+      <div class="container">
+        <span class="eyebrow">Classes</span>
+        <h1>Find your <em>class</em></h1>
+        <p>40+ classes every week – all included in your membership, no booking fees.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Categories</span>
+          <h2>Three ways to train</h2>
+        </div>
+        <div class="cat-grid">
+          <article class="cat-card reveal">
+            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80" alt="Man training with dumbbells" loading="lazy">
+            <div>
+              <h3><span class="badge badge-strength">Strength</span></h3>
+              <p>Build muscle and power with barbell, kettlebell and functional training – coached for perfect technique.</p>
+            </div>
+          </article>
+          <article class="cat-card reveal">
+            <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=800&q=80" alt="Woman doing an intense cardio workout" loading="lazy">
+            <div>
+              <h3><span class="badge badge-cardio">Cardio</span></h3>
+              <p>HIIT, spinning, boxing and bootcamp – burn calories and boost your endurance with great music.</p>
+            </div>
+          </article>
+          <article class="cat-card reveal">
+            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" alt="Woman practicing yoga" loading="lazy">
+            <div>
+              <h3><span class="badge badge-mind">Body &amp; Mind</span></h3>
+              <p>Yoga, Pilates and mobility sessions to improve flexibility, posture and recovery.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Weekly schedule</span>
+          <h2>Class schedule</h2>
+          <p>Pick a day and filter by category. Today's day is selected automatically.</p>
+        </div>
+
+        <div class="schedule-controls reveal">
+          <div class="tabs" role="tablist" aria-label="Day of the week" id="dayTabs"></div>
+          <div class="filters" aria-label="Category" id="filters">
+            <button class="filter active" type="button" data-cat="all" aria-pressed="true">All</button>
+            <button class="filter" type="button" data-cat="strength" aria-pressed="false">Strength</button>
+            <button class="filter" type="button" data-cat="cardio" aria-pressed="false">Cardio</button>
+            <button class="filter" type="button" data-cat="mind" aria-pressed="false">Body &amp; Mind</button>
+          </div>
+        </div>
+
+        <div class="schedule reveal" id="schedule" role="tabpanel" aria-live="polite">
+          <noscript><div class="empty">Please enable JavaScript to view the class schedule.</div></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container">
+        <div>
+          <h2>All classes included</h2>
+          <p>Become a member and save 20% on your first 6 months.</p>
+        </div>
+        <a href="join.html" class="btn">See membership plans</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo">GYM<span>LETICS</span></a>
+          <p>Your gym for strength, endurance and well-being.</p>
+        </div>
+        <div>
+          <h4>Opening hours</h4>
+          <ul>
+            <li>Mon–Fri: 6 AM–11 PM</li>
+            <li>Sat–Sun: 8 AM–10 PM</li>
+            <li>Holidays: 8 AM–8 PM</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>12 Sample Street</li>
+            <li>Sample City 12345</li>
+            <li><a href="mailto:hello@gymletics.example">hello@gymletics.example</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="about.html">Why Gymletics</a></li>
+            <li><a href="classes.html">Classes</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="join.html">Join</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Gymletics · Demo project</span>
+        <span>Photos: Unsplash</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

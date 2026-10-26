@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join – Gymletics</title>
+  <meta name="description" content="Membership plans at Gymletics – sign up for our newsletter and save 20% on your first 6 months.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container nav">
+      <a href="index.html" class="logo">GYM<span>LETICS</span></a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">Why Gymletics</a></li>
+          <li><a href="classes.html">Classes</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+      <a href="join.html#newsletter" class="btn btn-primary nav-cta">Get 20% off</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <img class="hero-bg" src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1920&q=80" alt="Athlete training hard in the gym">
+      <div class="container">
+        <span class="eyebrow">Membership</span>
+        <h1>Join <em>Gymletics</em> today</h1>
+        <p>Simple plans, no hidden fees – and 20% off your first 6 months with our newsletter code.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Plans</span>
+          <h2>Choose your membership</h2>
+          <p>Discounted prices apply with your newsletter code for months 1–6.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card reveal">
+            <h3>Basic</h3>
+            <p class="desc">Everything you need to train on your own.</p>
+            <div class="price">€29.90<small> / month</small></div>
+            <p class="price-note">With code: €23.92 / month for months 1–6</p>
+            <ul class="check-list">
+              <li>Full gym floor access</li>
+              <li>Free intro session</li>
+              <li>Personal training plan</li>
+            </ul>
+            <a href="#newsletter" class="btn btn-outline">Get discount code</a>
+          </article>
+          <article class="price-card featured reveal">
+            <span class="price-tag">Most popular</span>
+            <h3>Premium</h3>
+            <p class="desc">The full Gymletics experience.</p>
+            <div class="price">€39.90<small> / month</small></div>
+            <p class="price-note">With code: €31.92 / month for months 1–6</p>
+            <ul class="check-list">
+              <li>Everything in Basic</li>
+              <li>All 40+ weekly classes</li>
+              <li>Sauna &amp; steam room</li>
+              <li>Progress check-ins every 8 weeks</li>
+            </ul>
+            <a href="#newsletter" class="btn btn-primary">Get discount code</a>
+          </article>
+          <article class="price-card reveal">
+            <h3>Day Pass</h3>
+            <p class="desc">Try us out – no commitment.</p>
+            <div class="price">€12<small> / day</small></div>
+            <p class="price-note">Not eligible for the newsletter discount</p>
+            <ul class="check-list">
+              <li>Full gym floor access</li>
+              <li>Join any class that day</li>
+              <li>Sauna &amp; steam room</li>
+            </ul>
+            <a href="mailto:hello@gymletics.example" class="btn btn-outline">Ask at reception</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="newsletter" class="newsletter">
+      <img class="newsletter-bg" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=80" alt="" loading="lazy">
+      <div class="container newsletter-box">
+        <div class="reveal">
+          <span class="eyebrow">Newsletter offer</span>
+          <div class="discount">−20%</div>
+          <h2>on your first 6 months</h2>
+          <p>Sign up for our newsletter and receive your personal discount code: 20% off your monthly fee for the first 6 months of your membership. Plus training tips, class news and exclusive events.</p>
+        </div>
+
+        <div class="form-card reveal">
+          <form id="newsletterForm" novalidate>
+            <div class="field">
+              <label for="name">First name</label>
+              <input type="text" id="name" name="name" autocomplete="given-name" placeholder="Your first name" required>
+              <div class="error-msg" id="nameError" aria-live="polite"></div>
+            </div>
+            <div class="field">
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="name@example.com" required>
+              <div class="error-msg" id="emailError" aria-live="polite"></div>
+            </div>
+
+            <div class="terms">
+              <strong>Important – offer terms:</strong>
+              <ul>
+                <li>20% discount applies to the first 6 months of your membership.</li>
+                <li>The membership has a <strong>minimum term of 6 months</strong> and <strong>cannot be cancelled</strong> during this period.</li>
+                <li>After that, the regular monthly fee applies.</li>
+              </ul>
+            </div>
+
+            <label class="check">
+              <input type="checkbox" id="termsCheck" required>
+              <span>I understand that the discounted membership cannot be cancelled for the first 6 months.</span>
+            </label>
+            <label class="check">
+              <input type="checkbox" id="newsCheck" required>
+              <span>I want to receive the newsletter. I can unsubscribe from the newsletter at any time.</span>
+            </label>
+            <div class="error-msg" id="checkError" aria-live="polite"></div>
+
+            <button type="submit" class="btn btn-primary">Get my discount code</button>
+            <p class="form-note">We never share your data with third parties.</p>
+          </form>
+
+          <div class="success" id="successBox" hidden>
+            <h3 id="successTitle">Welcome!</h3>
+            <p>Your personal code for 20% off your first 6 months:</p>
+            <div class="code" id="codeOut"></div>
+            <p>Just show this code at reception when you sign up. Note: 6-month minimum term, cannot be cancelled during this period.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Frequently asked questions</h2>
+        </div>
+        <div class="faq reveal">
+          <details>
+            <summary>Can I cancel during the first 6 months?</summary>
+            <p>No. Memberships using the 20% newsletter discount have a minimum term of 6 months and cannot be cancelled during that period. After 6 months, the regular monthly fee and our standard cancellation terms apply.</p>
+          </details>
+          <details>
+            <summary>What happens after the 6 months?</summary>
+            <p>Your membership continues at the regular monthly price of the plan you chose – €29.90 for Basic or €39.90 for Premium.</p>
+          </details>
+          <details>
+            <summary>Can I unsubscribe from the newsletter?</summary>
+            <p>Yes, any time with one click. Unsubscribing from the newsletter does not affect your membership or your discount.</p>
+          </details>
+          <details>
+            <summary>Can I try the gym before signing up?</summary>
+            <p>Absolutely. Grab a Day Pass at reception, or book a free intro session with one of our coaches.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo">GYM<span>LETICS</span></a>
+          <p>Your gym for strength, endurance and well-being.</p>
+        </div>
+        <div>
+          <h4>Opening hours</h4>
+          <ul>
+            <li>Mon–Fri: 6 AM–11 PM</li>
+            <li>Sat–Sun: 8 AM–10 PM</li>
+            <li>Holidays: 8 AM–8 PM</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>12 Sample Street</li>
+            <li>Sample City 12345</li>
+            <li><a href="mailto:hello@gymletics.example">hello@gymletics.example</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="about.html">Why Gymletics</a></li>
+            <li><a href="classes.html">Classes</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="join.html">Join</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Gymletics · Demo project</span>
+        <span>Photos: Unsplash</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
